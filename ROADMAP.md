@@ -24,7 +24,7 @@
 
 ## Decisions
 
-- **One theme for both editors**, not two. The header, banner and footer cannot be broken from the editor.
-- **afrigov is bundled**, not loaded from a CDN. A government site should not depend on someone else's server.
+- **One theme for both editors.** The header, banner and footer cannot be broken from the editor.
+- **afrigov is bundled with the theme.** A government site should not depend on someone else's server.
 - **GPL v2 or later**, as WordPress themes must be. afrigov stays MIT and is included under that licence.
 - **Page-builder content is not converted.** Posts, pages written in the editor, menus and media carry over when the theme is switched; pages made in a builder are rebuilt from patterns.

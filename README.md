@@ -1,6 +1,6 @@
 # afrigovPress
 
-The [afrigov](https://github.com/omoyolab/afrigov) design system as a WordPress theme. Most government websites in Africa already run WordPress, so adopting afrigov becomes "install and activate" instead of "rebuild the site".
+The [afrigov](https://github.com/omoyolab/afrigov) design system as a WordPress theme. Most government websites in Africa already run WordPress, so adopting afrigov is a theme install.
 
 The theme is the `afrigovpress/` folder. Everything else here is for building and testing it.
 
