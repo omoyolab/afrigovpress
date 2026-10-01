@@ -1,0 +1,256 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": false,
+    "layout": {
+      "contentSize": "var(--ag-size-measure)",
+      "wideSize": "var(--ag-size-container)"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "defaultDuotone": false,
+      "custom": false,
+      "customGradient": false,
+      "customDuotone": false,
+      "palette": [
+        {
+          "slug": "ink",
+          "name": "Ink",
+          "color": "var(--ag-color-ink)"
+        },
+        {
+          "slug": "ink-muted",
+          "name": "Ink muted",
+          "color": "var(--ag-color-ink-muted)"
+        },
+        {
+          "slug": "ink-inverse",
+          "name": "Ink inverse",
+          "color": "var(--ag-color-ink-inverse)"
+        },
+        {
+          "slug": "paper",
+          "name": "Paper",
+          "color": "var(--ag-color-paper)"
+        },
+        {
+          "slug": "paper-alt",
+          "name": "Paper alt",
+          "color": "var(--ag-color-paper-alt)"
+        },
+        {
+          "slug": "paper-dark",
+          "name": "Paper dark",
+          "color": "var(--ag-color-paper-dark)"
+        },
+        {
+          "slug": "border",
+          "name": "Border",
+          "color": "var(--ag-color-border)"
+        },
+        {
+          "slug": "border-strong",
+          "name": "Border strong",
+          "color": "var(--ag-color-border-strong)"
+        },
+        {
+          "slug": "primary",
+          "name": "Primary",
+          "color": "var(--ag-color-primary)"
+        },
+        {
+          "slug": "primary-hover",
+          "name": "Primary hover",
+          "color": "var(--ag-color-primary-hover)"
+        },
+        {
+          "slug": "on-primary",
+          "name": "On primary",
+          "color": "var(--ag-color-on-primary)"
+        },
+        {
+          "slug": "primary-tint",
+          "name": "Primary tint",
+          "color": "var(--ag-color-primary-tint)"
+        },
+        {
+          "slug": "accent",
+          "name": "Accent",
+          "color": "var(--ag-color-accent)"
+        },
+        {
+          "slug": "link",
+          "name": "Link",
+          "color": "var(--ag-color-link)"
+        },
+        {
+          "slug": "link-hover",
+          "name": "Link hover",
+          "color": "var(--ag-color-link-hover)"
+        },
+        {
+          "slug": "link-visited",
+          "name": "Link visited",
+          "color": "var(--ag-color-link-visited)"
+        },
+        {
+          "slug": "focus",
+          "name": "Focus",
+          "color": "var(--ag-color-focus)"
+        },
+        {
+          "slug": "success",
+          "name": "Success",
+          "color": "var(--ag-color-success)"
+        },
+        {
+          "slug": "success-tint",
+          "name": "Success tint",
+          "color": "var(--ag-color-success-tint)"
+        },
+        {
+          "slug": "warning",
+          "name": "Warning",
+          "color": "var(--ag-color-warning)"
+        },
+        {
+          "slug": "warning-tint",
+          "name": "Warning tint",
+          "color": "var(--ag-color-warning-tint)"
+        },
+        {
+          "slug": "error",
+          "name": "Error",
+          "color": "var(--ag-color-error)"
+        },
+        {
+          "slug": "error-tint",
+          "name": "Error tint",
+          "color": "var(--ag-color-error-tint)"
+        },
+        {
+          "slug": "info",
+          "name": "Info",
+          "color": "var(--ag-color-info)"
+        },
+        {
+          "slug": "info-tint",
+          "name": "Info tint",
+          "color": "var(--ag-color-info-tint)"
+        }
+      ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "customFontSize": false,
+      "dropCap": false,
+      "fontStyle": false,
+      "letterSpacing": false,
+      "textDecoration": false,
+      "textTransform": false,
+      "fontSizes": [
+        {
+          "slug": "xs",
+          "name": "XS",
+          "size": "var(--ag-font-size-xs)"
+        },
+        {
+          "slug": "sm",
+          "name": "SM",
+          "size": "var(--ag-font-size-sm)"
+        },
+        {
+          "slug": "md",
+          "name": "MD",
+          "size": "var(--ag-font-size-md)"
+        },
+        {
+          "slug": "lg",
+          "name": "LG",
+          "size": "var(--ag-font-size-lg)"
+        },
+        {
+          "slug": "xl",
+          "name": "XL",
+          "size": "var(--ag-font-size-xl)"
+        },
+        {
+          "slug": "2xl",
+          "name": "2XL",
+          "size": "var(--ag-font-size-2xl)"
+        },
+        {
+          "slug": "3xl",
+          "name": "3XL",
+          "size": "var(--ag-font-size-3xl)"
+        },
+        {
+          "slug": "4xl",
+          "name": "4XL",
+          "size": "var(--ag-font-size-4xl)"
+        }
+      ]
+    },
+    "spacing": {
+      "defaultSpacingSizes": false,
+      "customSpacingSize": false,
+      "spacingSizes": [
+        {
+          "slug": "1",
+          "name": "1",
+          "size": "var(--ag-space-1)"
+        },
+        {
+          "slug": "2",
+          "name": "2",
+          "size": "var(--ag-space-2)"
+        },
+        {
+          "slug": "3",
+          "name": "3",
+          "size": "var(--ag-space-3)"
+        },
+        {
+          "slug": "4",
+          "name": "4",
+          "size": "var(--ag-space-4)"
+        },
+        {
+          "slug": "5",
+          "name": "5",
+          "size": "var(--ag-space-5)"
+        },
+        {
+          "slug": "6",
+          "name": "6",
+          "size": "var(--ag-space-6)"
+        },
+        {
+          "slug": "7",
+          "name": "7",
+          "size": "var(--ag-space-7)"
+        },
+        {
+          "slug": "8",
+          "name": "8",
+          "size": "var(--ag-space-8)"
+        }
+      ],
+      "units": [
+        "rem",
+        "%"
+      ]
+    },
+    "border": {
+      "color": false,
+      "radius": false,
+      "style": false,
+      "width": false
+    },
+    "shadow": {
+      "defaultPresets": false
+    }
+  }
+}

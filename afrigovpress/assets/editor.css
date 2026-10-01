@@ -1,0 +1,24 @@
+/* The block editor only. Content lines up on the left of one column, as it does on the site,
+   instead of each block being centred on its own. */
+body {
+  padding-inline: var(--ag-space-4);
+}
+
+.is-root-container,
+.editor-visual-editor__post-title-wrapper > *,
+.edit-post-visual-editor__post-title-wrapper > * {
+  max-width: var(--ag-size-container);
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* The class is repeated to outrank the editor's own rule that centres each block, which is
+   written with three classes and !important. */
+.is-root-container.is-root-container.is-root-container.is-root-container > * {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.is-root-container > :where(p, h2, h3, h4, h5, ul, ol, dl, pre, blockquote, .wp-block-quote, .wp-block-details, .wp-block-table) {
+  max-width: var(--ag-size-measure);
+}

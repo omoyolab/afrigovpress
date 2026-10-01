@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.zip
+
+# Working notes that are not for the public repository.
+private/

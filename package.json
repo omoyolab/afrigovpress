@@ -1,0 +1,18 @@
+{
+  "name": "afrigovpress-dev",
+  "private": true,
+  "type": "module",
+  "description": "Build and local WordPress for the afrigovPress theme. The theme itself is the afrigovpress/ folder.",
+  "scripts": {
+    "sync": "node scripts/sync.mjs",
+    "start": "wp-env start",
+    "stop": "wp-env stop",
+    "cli": "wp-env run cli wp",
+    "zip": "node scripts/zip.mjs",
+    "seed": "docker exec -i $(docker ps --format '{{.Names}}' | grep -- '-cli-1$' | grep -v tests | head -1) wp eval-file - < scripts/seed.php"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0",
+    "afrigov": "^0.8.5"
+  }
+}
