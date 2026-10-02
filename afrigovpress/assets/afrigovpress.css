@@ -472,3 +472,22 @@ body {
 .agp-questions .wp-block-details summary:hover {
   text-decoration: underline;
 }
+
+/* The portrait keeps afrigov's size; the image block's own width rule must not undo it. */
+.wp-block-image.ag-statement__media {
+  max-width: 10rem;
+}
+
+/* Latest posts with a thumbnail: image in its own column, title and date beside it, as in the dated list. */
+.wp-block-latest-posts.ag-list li:has(.wp-block-latest-posts__featured-image) {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  column-gap: var(--ag-space-4);
+  align-items: start;
+}
+
+.wp-block-latest-posts.ag-list li:has(.wp-block-latest-posts__featured-image) .wp-block-latest-posts__featured-image {
+  float: none;
+  grid-row: 1 / span 3;
+  margin: 0;
+}
