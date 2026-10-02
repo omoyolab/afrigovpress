@@ -1,5 +1,7 @@
 # afrigovPress
 
+> **In development.** This theme is an early build and how pages are edited is still being decided. It runs and its pages pass the accessibility audit, but it is not ready for a live government site, and the editing experience will change.
+
 The [afrigov](https://github.com/omoyolab/afrigov) design system as a WordPress theme. Most government websites in Africa already run WordPress, so adopting afrigov is a theme install.
 
 The theme is the `afrigovpress/` folder. Everything else here is for building and testing it.
