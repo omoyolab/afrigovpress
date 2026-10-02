@@ -8,10 +8,13 @@
 - A description, sharing tags and structured data for every page.
 - afrigov synced in from the npm package, with the editor's presets generated from its tokens.
 
-## 0.2 Patterns
+## 0.2 Patterns (done)
 
-- Every afrigov component and variant as an editor pattern: hero, band, statement, cards, dated list, download link, empty state, gallery album, accordion.
-- A Formats menu in the classic editor for the same components.
+- Sections as editor patterns: hero, hero with image, centred hero, band with cards, band with a call to act, service cards, statement, latest news, questions, alert, downloads.
+- A whole home page pattern, and a landing page template with no automatic title.
+- Variants in the Styles panel for paragraphs, buttons, groups, tables and lists.
+
+Still to come from this milestone: a Formats menu in the classic editor, and a gallery album pattern.
 
 ## 0.3 Languages and forms
 

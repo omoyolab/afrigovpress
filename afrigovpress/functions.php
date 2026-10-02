@@ -9,12 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AFRIGOVPRESS_VERSION', '0.1.0' );
+define( 'AFRIGOVPRESS_VERSION', '0.2.0' );
 
 require get_template_directory() . '/inc/packs.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/head.php';
+require get_template_directory() . '/inc/patterns.php';
 
 /**
  * What the theme supports, and its menus.

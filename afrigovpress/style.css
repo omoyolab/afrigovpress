@@ -4,14 +4,14 @@ Theme URI: https://github.com/omoyolab/afrigovpress
 Author: Abimbola Omoyola
 Author URI: https://github.com/omoyolab
 Description: The afrigov design system for WordPress. Accessible pages for ministries, agencies and public services in Africa: an official website banner, country packs, news with a dated list, and titles, descriptions and structured data written for every page.
-Version: 0.1.0
-Requires at least: 5.9
+Version: 0.2.0
+Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: afrigovpress
-Tags: accessibility-ready, custom-logo, custom-menu, editor-style, featured-images, rtl-language-support, translation-ready, one-column, news
+Tags: accessibility-ready, block-patterns, block-styles, custom-logo, custom-menu, editor-style, featured-images, rtl-language-support, translation-ready, one-column, news
 */
 
 /* The design system is in assets/afrigov/, copied from the afrigov package by `npm run sync`.

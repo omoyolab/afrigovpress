@@ -1,9 +1,9 @@
 === afrigovPress ===
 Contributors: omoyolab
-Requires at least: 5.9
+Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,19 @@ afrigovPress puts the afrigov design system on a WordPress site. Choose your cou
 3. Appearance, Menus: the main navigation, two footer columns, and the footer bar.
 4. Settings, Reading: a static home page and a News page for posts.
 
+== Building a page ==
+
+1. Add a page and choose the template "Landing page, built from patterns" for a home or landing page. Other pages keep the default template, which writes the title for you.
+2. Press the + button, open Patterns, and choose "afrigov: sections". Click a pattern to add it: hero, band, service cards, statement, latest news, questions, alert, downloads.
+3. Change the words and the images. To add a card or a question, select one and duplicate it.
+4. For variants, select a block and open the Styles panel: a paragraph can be a Lead; a button can be Secondary, Start or Warning; a group can be a tinted, primary or dark band, an inset or an alert; a table can be striped; a list can be downloads.
+
+"afrigov: whole pages" has a complete home page to start from.
+
 == Changelog ==
+
+= 0.2.0 =
+* Patterns for every section, a whole home page, block styles for the common variants, and a landing page template.
 
 = 0.1.0 =
 * Foundation: templates, country and organisation settings, menus, news, search, and the page head. Carries afrigov 0.8.5.

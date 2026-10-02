@@ -22,3 +22,8 @@ body {
 .is-root-container > :where(p, h2, h3, h4, h5, ul, ol, dl, pre, blockquote, .wp-block-quote, .wp-block-details, .wp-block-table) {
   max-width: var(--ag-size-measure);
 }
+
+/* Bands and other full-width blocks use the whole editor width. */
+.is-root-container > .alignfull {
+  max-width: none;
+}

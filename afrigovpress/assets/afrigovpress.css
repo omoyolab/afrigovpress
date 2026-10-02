@@ -182,3 +182,293 @@
 .admin-bar .ag-skip-link:focus {
   top: 32px;
 }
+
+/* ---------- Patterns: afrigov components built from WordPress blocks ---------- */
+
+/* Full-width blocks break out of the page container; the band's own container lines its content up again. */
+body {
+  overflow-x: clip;
+}
+
+.agp-content > .alignfull {
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+}
+
+/* Buttons sit in a row with afrigov's spacing. */
+.wp-block-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ag-space-3);
+  margin-bottom: var(--ag-space-5);
+}
+
+.wp-block-button {
+  margin: 0;
+}
+
+/* Hero and statement images: the image block's figure stands in for afrigov's figure. */
+.ag-hero__media,
+.ag-statement__media {
+  margin: 0;
+}
+
+.ag-hero__media img,
+.ag-statement__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--ag-size-radius);
+  background: var(--ag-color-paper-alt);
+}
+
+.ag-hero__media img {
+  aspect-ratio: 4 / 3;
+}
+
+.ag-statement__media img {
+  aspect-ratio: 1;
+}
+
+.ag-hero__actions {
+  margin-bottom: 0;
+}
+
+/* Cards: the link in the title is stretched over the card, as in afrigov. */
+.ag-card__title a {
+  /* A box of its own, so the link is a full line tall even before the card stretches it. */
+  display: inline-block;
+  color: var(--ag-color-link);
+}
+
+.ag-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.ag-card__title a:focus-visible {
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  color: var(--ag-color-link);
+}
+
+.ag-card:has(.ag-card__title a:focus-visible) {
+  outline: var(--ag-size-focus-ring) solid var(--ag-color-focus);
+  box-shadow: 0 0 0 calc(var(--ag-size-focus-ring) * 2) var(--ag-color-ink);
+}
+
+.ag-card > :last-child,
+.ag-alert > :last-child,
+.ag-statement__body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Button variants from the Styles panel. */
+.is-style-agp-secondary > .wp-block-button__link {
+  background: var(--ag-color-paper);
+  color: var(--ag-color-primary);
+}
+
+.is-style-agp-secondary > .wp-block-button__link:hover {
+  background: var(--ag-color-primary-tint);
+  color: var(--ag-color-primary-hover);
+}
+
+.is-style-agp-warning > .wp-block-button__link {
+  background: var(--ag-color-error);
+  border-color: var(--ag-color-error);
+}
+
+.is-style-agp-warning > .wp-block-button__link:hover {
+  background: var(--ag-color-ink);
+  border-color: var(--ag-color-ink);
+}
+
+.is-style-agp-start > .wp-block-button__link {
+  gap: var(--ag-space-2);
+  padding-inline: var(--ag-space-5) var(--ag-space-4);
+  font-size: var(--ag-font-size-lg);
+}
+
+.is-style-agp-start > .wp-block-button__link::after {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  border-top: 3px solid currentcolor;
+  border-inline-end: 3px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+[dir="rtl"] .is-style-agp-start > .wp-block-button__link::after {
+  transform: rotate(-45deg);
+}
+
+/* On a coloured band, buttons invert so they still stand out. */
+.ag-band--primary .wp-block-button__link,
+.ag-band--dark .wp-block-button__link,
+.is-style-agp-band-primary .wp-block-button__link,
+.is-style-agp-band-dark .wp-block-button__link {
+  background: var(--ag-color-paper);
+  border-color: var(--ag-color-paper);
+  color: var(--ag-color-primary);
+}
+
+/* Paragraph: Lead. */
+.is-style-agp-lead {
+  font-size: var(--ag-font-size-lg);
+  color: var(--ag-color-ink-muted);
+}
+
+.ag-band--primary .ag-lead,
+.ag-band--dark .ag-lead {
+  color: inherit;
+}
+
+/* Group: bands, inset and alert, chosen from the Styles panel on any Group block. */
+.is-style-agp-band-tint,
+.is-style-agp-band-primary,
+.is-style-agp-band-dark {
+  margin-bottom: var(--ag-space-6);
+  padding: var(--ag-space-6) var(--ag-space-5);
+}
+
+.is-style-agp-band-tint {
+  background: var(--ag-color-paper-alt);
+}
+
+.is-style-agp-band-primary {
+  background: var(--ag-color-primary);
+  color: var(--ag-color-on-primary);
+}
+
+.is-style-agp-band-dark {
+  background: var(--ag-color-paper-dark);
+  color: var(--ag-color-ink-inverse);
+}
+
+.is-style-agp-band-primary :where(h1, h2, h3, p, a),
+.is-style-agp-band-dark :where(h1, h2, h3, p, a) {
+  color: inherit;
+}
+
+.is-style-agp-inset {
+  max-width: var(--ag-size-measure);
+  margin-bottom: var(--ag-space-5);
+  padding: var(--ag-space-3) var(--ag-space-4);
+  border-inline-start: 8px solid var(--ag-color-border);
+}
+
+.is-style-agp-alert {
+  margin-bottom: var(--ag-space-5);
+  padding: var(--ag-space-4);
+  border: 3px solid var(--ag-color-info);
+  border-inline-start-width: 8px;
+  background: var(--ag-color-info-tint);
+}
+
+.is-style-agp-band-tint > :last-child,
+.is-style-agp-band-primary > :last-child,
+.is-style-agp-band-dark > :last-child,
+.is-style-agp-inset > :last-child,
+.is-style-agp-alert > :last-child {
+  margin-bottom: 0;
+}
+
+/* Table: Striped. */
+.is-style-agp-striped tbody tr:nth-child(odd) {
+  background: var(--ag-color-paper-alt);
+}
+
+/* List: Downloads. Each link gets the file icon; the format and size are written after it. */
+.is-style-agp-downloads {
+  padding: 0;
+  list-style: none;
+}
+
+.is-style-agp-downloads li {
+  margin: 0;
+  padding-block: var(--ag-space-2);
+}
+
+.is-style-agp-downloads a {
+  font-weight: var(--ag-font-weight-bold);
+}
+
+.is-style-agp-downloads a::before {
+  content: "";
+  display: inline-block;
+  vertical-align: -0.15em;
+  width: 0.8em;
+  height: 1em;
+  margin-inline-end: 0.4em;
+  border: 2px solid currentcolor;
+  border-radius: 2px 0.4em 2px 2px;
+  background: linear-gradient(currentcolor, currentcolor) center / 55% 2px no-repeat;
+}
+
+/* Latest posts block as a dated list with thumbnails. */
+.wp-block-latest-posts.ag-list {
+  padding: 0;
+}
+
+.wp-block-latest-posts.ag-list li {
+  display: flow-root;
+  margin: 0;
+  padding-block: var(--ag-space-3);
+  border-bottom: 1px solid var(--ag-color-border);
+}
+
+.wp-block-latest-posts.ag-list .wp-block-latest-posts__post-title {
+  font-weight: var(--ag-font-weight-bold);
+}
+
+.wp-block-latest-posts.ag-list time {
+  display: block;
+  margin-top: var(--ag-space-1);
+  font-size: var(--ag-font-size-xs);
+  color: var(--ag-color-ink-muted);
+}
+
+.wp-block-latest-posts.ag-list .wp-block-latest-posts__featured-image {
+  float: inline-start;
+  width: 7rem;
+  margin: 0;
+  margin-inline-end: var(--ag-space-4);
+}
+
+.wp-block-latest-posts.ag-list .wp-block-latest-posts__featured-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+/* Questions: details blocks as an accordion. */
+.agp-questions {
+  max-width: var(--ag-size-measure);
+  margin-bottom: var(--ag-space-5);
+}
+
+.agp-questions .wp-block-details {
+  margin: 0;
+  border-bottom: 1px solid var(--ag-color-border);
+}
+
+.agp-questions .wp-block-details:first-of-type {
+  border-top: 1px solid var(--ag-color-border);
+}
+
+.agp-questions .wp-block-details summary {
+  display: block;
+  padding-block: var(--ag-space-3);
+  font-weight: var(--ag-font-weight-bold);
+  text-decoration: none;
+}
+
+.agp-questions .wp-block-details summary:hover {
+  text-decoration: underline;
+}

@@ -12,6 +12,17 @@ The theme is the `afrigovpress/` folder. Everything else here is for building an
 - A title, description, sharing tags and structured data for every page, written from what the editor already wrote. An SEO plugin, if active, takes over.
 - Pages that score 100, A with [afrigov-audit](https://github.com/omoyolab/afrigov-audit) out of the box.
 
+## Building a page
+
+No class names to type. Everything is a pattern you insert and then edit.
+
+1. **Pick the template.** For a home or landing page choose "Landing page, built from patterns" in the page settings. It has no automatic title, because the hero carries the heading. Other pages keep the default template, which writes the title and breadcrumb.
+2. **Insert patterns.** Press +, open Patterns, choose "afrigov: sections", and click one: hero, hero with image, centred hero, band with cards, band with a call to act, service cards, statement, latest news, questions, alert, downloads.
+3. **Edit the words and images.** To add a card or a question, select one and duplicate it.
+4. **Choose variants in the Styles panel.** A paragraph can be a Lead. A button can be Secondary, Start or Warning. A group can be a tinted, primary or dark band, an inset or an alert. A table can be striped. A list can be downloads.
+
+"afrigov: whole pages" has a complete home page to start from.
+
 ## Run it locally
 
 Needs Docker and Node.

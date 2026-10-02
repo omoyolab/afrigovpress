@@ -83,6 +83,40 @@ $contact       = seed_page( 'Contact', 'contact', $p( 'Email <a href="mailto:inf
 $accessibility = seed_page( 'Accessibility statement', 'accessibility', $p( 'This website is built to meet WCAG 2.2 at level AA. Tell us if something does not work for you.' ) );
 $privacy       = seed_page( 'Privacy', 'privacy', $p( 'What we collect and why.' ) );
 
+// The home page is built from the theme's patterns, with the ministry's words in place of the samples.
+$registry = WP_Block_Patterns_Registry::get_instance();
+$pattern  = function ( $slug ) use ( $registry ) {
+	$found = $registry->get_registered( $slug );
+	return $found ? $found['content'] : '';
+};
+$home_content = strtr(
+	$pattern( 'afrigovpress/hero-image' ) . "\n\n" . $pattern( 'afrigovpress/statement' ) . "\n\n" . $pattern( 'afrigovpress/band-cards' ) . "\n\n" . $pattern( 'afrigovpress/latest-news' ),
+	array(
+		'Clean water for every community'  => 'Driving economic growth through digital technology and innovation',
+		'The agency that builds, inspects and regulates public water supply.' => 'The ministry leads Nigeria\'s digital economy: connectivity, technical talent, data, innovation and the digital transformation of government.',
+		'>Our programmes<'                 => '>Our initiatives<',
+		'A message from the Director General' => 'A message from the Minister',
+		'Every household should be able to count on clean water and know who to call when it stops. This year we are publishing our inspection results, district by district, so that you can hold us to that.' => 'It is an honour to serve Nigeria in this role. With the input of stakeholders across the sector we have co-created a strategic blueprint for the digital economy. It is the plan this ministry is delivering.',
+		'<strong>Dr Amina Bello</strong>Director General, National Water Agency' => '<strong>Dr \'Bosun Tijani</strong>Honourable Minister of Communications, Innovation and Digital Economy',
+		'Popular services'                 => 'Initiatives',
+		'>Report a leak<'                  => '>Project BRIDGE<',
+		'Tell us where and we will send a crew.' => '90,000 km of fibre optic cable as the national backbone.',
+		'>Check your water quality<'       => '>3 Million Technical Talent<',
+		'Inspection results for your district.' => 'Technical skills for three million Nigerians.',
+		'>Pay a bill<'                     => '>E-government<',
+		'By card, bank transfer or mobile money.' => 'Connected government, open data and online services.',
+		'href="#"'                         => 'href="' . esc_url( home_url( '/initiatives/' ) ) . '"',
+	)
+);
+wp_update_post(
+	array(
+		'ID'           => $home,
+		'post_title'   => 'Home',
+		'post_content' => $home_content,
+	)
+);
+update_post_meta( $home, '_wp_page_template', 'template-landing.php' );
+
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $home );
 update_option( 'page_for_posts', $news );
