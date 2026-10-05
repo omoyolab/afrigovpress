@@ -254,3 +254,24 @@ function afrigovpress_social() {
 function afrigovpress_date( $post_id = null ) {
 	return '<time datetime="' . esc_attr( get_the_date( 'Y-m-d', $post_id ) ) . '">' . esc_html( get_the_date( 'j F Y', $post_id ) ) . '</time>';
 }
+
+/**
+ * True when the page opens with an afrigov hero that is the page's main heading. The theme then
+ * leaves out its own title, so the page has one main heading, not two.
+ *
+ * @param int|WP_Post|null $post The page. Default the current one.
+ * @return bool
+ */
+function afrigovpress_hero_is_title( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post || ! has_blocks( $post->post_content ) ) {
+		return false;
+	}
+	foreach ( parse_blocks( $post->post_content ) as $block ) {
+		if ( empty( $block['blockName'] ) ) {
+			continue; // Whitespace between blocks.
+		}
+		return 'afrigov/hero' === $block['blockName'] && false !== ( $block['attrs']['isPageTitle'] ?? true );
+	}
+	return false;
+}

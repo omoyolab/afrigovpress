@@ -13,6 +13,6 @@
   },
   "devDependencies": {
     "@wordpress/env": "^10.0.0",
-    "afrigov": "^0.8.5"
+    "afrigov": "^0.15.0"
   }
 }

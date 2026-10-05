@@ -39,6 +39,9 @@ function afrigovpress_setup() {
 		)
 	);
 
+	// Tells the afrigov blocks plugin that this theme already carries afrigov's styles.
+	add_theme_support( 'afrigov' );
+
 	// The editor shows content the way the site does.
 	add_theme_support( 'editor-styles' );
 	$styles = array( 'assets/afrigov/core.min.css' );

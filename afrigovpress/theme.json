@@ -81,6 +81,11 @@
           "color": "var(--ag-color-accent)"
         },
         {
+          "slug": "on-accent",
+          "name": "On accent",
+          "color": "var(--ag-color-on-accent)"
+        },
+        {
           "slug": "link",
           "name": "Link",
           "color": "var(--ag-color-link)"
