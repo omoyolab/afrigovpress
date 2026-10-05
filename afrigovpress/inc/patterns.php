@@ -69,3 +69,22 @@ add_action( 'init', 'afrigovpress_block_styles' );
 function afrigovpress_placeholder( $ratio ) {
 	return esc_url( get_template_directory_uri() . '/assets/placeholder-' . $ratio . '.svg' );
 }
+
+/**
+ * With the afrigov blocks plugin active, its blocks and starter pages replace these patterns,
+ * which are built from general-purpose blocks. They stay for sites without the plugin.
+ */
+function afrigovpress_hide_patterns_for_blocks() {
+	if ( ! function_exists( 'afrigov_blocks_register' ) ) {
+		return;
+	}
+	$registry = WP_Block_Patterns_Registry::get_instance();
+	foreach ( $registry->get_all_registered() as $pattern ) {
+		if ( str_starts_with( $pattern['name'], 'afrigovpress/' ) ) {
+			unregister_block_pattern( $pattern['name'] );
+		}
+	}
+	unregister_block_pattern_category( 'afrigovpress' );
+	unregister_block_pattern_category( 'afrigovpress-pages' );
+}
+add_action( 'init', 'afrigovpress_hide_patterns_for_blocks', 20 );
