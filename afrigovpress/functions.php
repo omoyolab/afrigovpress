@@ -137,3 +137,19 @@ function afrigovpress_patterns() {
 	remove_theme_support( 'core-block-patterns' );
 }
 add_action( 'after_setup_theme', 'afrigovpress_patterns' );
+
+/**
+ * No emoji scripts. WordPress adds about 13 KB to every page to draw emoji on old systems;
+ * a government page is lighter without them, and phones show emoji themselves.
+ */
+function afrigovpress_no_emoji() {
+	remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+	remove_action( 'wp_print_styles', 'print_emoji_styles' );
+	remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+	remove_action( 'admin_print_styles', 'print_emoji_styles' );
+	remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+	remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+	remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+	add_filter( 'emoji_svg_url', '__return_false' );
+}
+add_action( 'init', 'afrigovpress_no_emoji' );

@@ -98,7 +98,26 @@ function afrigovpress_customize( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'afrigovpress_header_search',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'afrigovpress_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'afrigovpress_header_search',
+		array(
+			'label'       => __( 'Search in the header', 'afrigovpress' ),
+			'description' => __( 'A search button after the menu that opens a search box.', 'afrigovpress' ),
+			'section'     => 'afrigovpress',
+			'type'        => 'checkbox',
+		)
+	);
+
 	$text = array(
+		'afrigovpress_copy_of'   => array( __( 'Demonstration copy of', 'afrigovpress' ), __( 'Only for a demonstration that copies a real website: its address. The banner and the footer then say this site is an unofficial rebuild of it. Leave empty on a real site.', 'afrigovpress' ), 'url' ),
+		'afrigovpress_copy_name' => array( __( 'Full name of the copied organisation', 'afrigovpress' ), __( 'For the banner of a demonstration copy, such as: the Federal Ministry of Health.', 'afrigovpress' ), 'text' ),
 		'afrigovpress_parent'  => array( __( 'Line under the organisation name', 'afrigovpress' ), __( 'For an agency: "An agency of the Ministry of Health". Leave empty to use the tagline.', 'afrigovpress' ), 'text' ),
 		'afrigovpress_address' => array( __( 'Postal address', 'afrigovpress' ), __( 'One line per line. Shown in the footer.', 'afrigovpress' ), 'textarea' ),
 		'afrigovpress_phone'   => array( __( 'Phone', 'afrigovpress' ), '', 'text' ),
@@ -109,7 +128,7 @@ function afrigovpress_customize( $wp_customize ) {
 			$id,
 			array(
 				'default'           => '',
-				'sanitize_callback' => 'textarea' === $field[2] ? 'sanitize_textarea_field' : ( 'email' === $field[2] ? 'sanitize_email' : 'sanitize_text_field' ),
+				'sanitize_callback' => 'textarea' === $field[2] ? 'sanitize_textarea_field' : ( 'email' === $field[2] ? 'sanitize_email' : ( 'url' === $field[2] ? 'esc_url_raw' : 'sanitize_text_field' ) ),
 			)
 		);
 		$wp_customize->add_control(

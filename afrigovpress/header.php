@@ -50,6 +50,22 @@
 				<?php endif; ?>
 			</span>
 		</a>
+		<?php if ( get_theme_mod( 'afrigovpress_header_search', true ) ) : ?>
+			<details class="ag-header__search" data-ag-menu>
+				<summary class="ag-header__search-toggle"><span class="ag-search__icon" aria-hidden="true"></span><span class="ag-visually-hidden"><?php esc_html_e( 'Search', 'afrigovpress' ); ?></span></summary>
+				<div class="ag-header__search-panel">
+					<div class="ag-container">
+						<form class="ag-search" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+							<label class="ag-search__label" for="header-q"><?php esc_html_e( 'Search this site', 'afrigovpress' ); ?></label>
+							<div class="ag-search__row">
+								<input class="ag-search__input" type="search" id="header-q" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" />
+								<button class="ag-search__button" type="submit"><span class="ag-search__icon" aria-hidden="true"></span><?php esc_html_e( 'Search', 'afrigovpress' ); ?></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</details>
+		<?php endif; ?>
 		<button class="ag-header__toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-ag-toggle><?php esc_html_e( 'Menu', 'afrigovpress' ); ?></button>
 		<nav class="ag-header__nav" id="site-nav" aria-label="<?php esc_attr_e( 'Main', 'afrigovpress' ); ?>">
 			<?php
@@ -58,7 +74,7 @@
 					'theme_location' => 'primary',
 					'container'      => false,
 					'menu_class'     => 'ag-nav',
-					'depth'          => 1,
+					'depth'          => 2,
 					'walker'         => new Afrigovpress_Nav_Walker(),
 					'fallback_cb'    => 'afrigovpress_menu_fallback',
 				)

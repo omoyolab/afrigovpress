@@ -28,6 +28,11 @@ function afrigovpress_flag( $large = false ) {
  * The official website banner, above the header on every page.
  */
 function afrigovpress_banner() {
+	$copy_of = get_theme_mod( 'afrigovpress_copy_of', '' );
+	if ( $copy_of ) {
+		afrigovpress_demo_banner( $copy_of );
+		return;
+	}
 	if ( ! get_theme_mod( 'afrigovpress_banner', true ) ) {
 		return;
 	}
@@ -47,9 +52,92 @@ function afrigovpress_banner() {
 }
 
 /**
- * Header navigation: one level, each link an afrigov nav link, the current page marked for assistive technology.
+ * The banner of a demonstration copy of a real website: it says plainly that it is unofficial,
+ * and where the real site is. Never the official banner, so a copy is never taken for the real thing.
+ *
+ * @param string $copy_of The real site's address.
+ */
+function afrigovpress_demo_banner( $copy_of ) {
+	$pack       = afrigovpress_pack();
+	$government = $pack['government'] ?? __( 'government', 'afrigovpress' );
+	$domain     = preg_replace( '~^www\.~', '', (string) wp_parse_url( $copy_of, PHP_URL_HOST ) );
+	$name       = get_theme_mod( 'afrigovpress_copy_name', '' );
+	$name       = $name ? $name : get_bloginfo( 'name' );
+	$tld        = $pack['domain'] ?? '';
+	?>
+	<section class="ag-banner" aria-label="<?php esc_attr_e( 'Unofficial website notice', 'afrigovpress' ); ?>">
+		<div class="ag-container ag-banner__inner">
+			<?php echo afrigovpress_flag(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed markup. ?>
+			<p class="ag-banner__text">
+				<?php
+				/* translators: %s: the government, such as Federal Republic of Nigeria */
+				echo esc_html( sprintf( __( 'An unofficial rebuild of a %s website', 'afrigovpress' ), $government ) );
+				?>
+			</p>
+			<details class="ag-banner__details">
+				<summary><?php esc_html_e( 'How you know this is unofficial', 'afrigovpress' ); ?></summary>
+				<p>
+					<?php
+					/* translators: %s: the organisation's full name */
+					echo esc_html( sprintf( __( 'This is a demonstration built on afrigov. It is not run by %s.', 'afrigovpress' ), $name ) );
+					?>
+					<?php esc_html_e( 'The real website is', 'afrigovpress' ); ?> <a href="<?php echo esc_url( $copy_of ); ?>"><?php echo esc_html( $domain ); ?></a>.
+				</p>
+				<p>
+					<?php
+					if ( $tld ) {
+						/* translators: %s: the government domain, such as .gov.ng */
+						echo esc_html( sprintf( __( 'Official websites use %s. This one does not, and it carries no government seal.', 'afrigovpress' ), $tld ) );
+					}
+					?>
+					<?php esc_html_e( 'Nothing you type here is sent to the organisation.', 'afrigovpress' ); ?>
+				</p>
+			</details>
+		</div>
+	</section>
+	<?php
+}
+
+/**
+ * Header navigation. A top-level item with items under it becomes an afrigov section menu: a
+ * details element that opens with no script, the item's name as its button, the items as its
+ * links. The section's own page belongs among those items, since the name opens the menu.
+ * In the footer the walker draws one level of plain links.
  */
 class Afrigovpress_Nav_Walker extends Walker_Nav_Menu {
+	/**
+	 * True while drawing an item that opens a section menu.
+	 *
+	 * @param stdClass|null $args  wp_nav_menu arguments.
+	 * @param int           $depth Depth.
+	 * @return bool
+	 */
+	private function is_section( $args, $depth ) {
+		return 0 === $depth && $this->has_children && isset( $args->depth ) && 1 !== (int) $args->depth;
+	}
+
+	/**
+	 * Opens a section menu's list.
+	 *
+	 * @param string   $output Markup so far.
+	 * @param int      $depth  Depth.
+	 * @param stdClass $args   wp_nav_menu arguments.
+	 */
+	public function start_lvl( &$output, $depth = 0, $args = null ) {
+		$output .= '<ul class="ag-nav__menu">';
+	}
+
+	/**
+	 * Closes a section menu's list and its details.
+	 *
+	 * @param string   $output Markup so far.
+	 * @param int      $depth  Depth.
+	 * @param stdClass $args   wp_nav_menu arguments.
+	 */
+	public function end_lvl( &$output, $depth = 0, $args = null ) {
+		$output .= '</ul></details>';
+	}
+
 	/**
 	 * Opens an item.
 	 *
@@ -60,12 +148,17 @@ class Afrigovpress_Nav_Walker extends Walker_Nav_Menu {
 	 * @param int      $id     Unused.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
-		$classes = (array) $item->classes;
-		$current = in_array( 'current-menu-item', $classes, true ) || in_array( 'current-menu-ancestor', $classes, true ) || in_array( 'current_page_parent', $classes, true );
-		$class   = isset( $args->link_class ) ? $args->link_class : 'ag-nav__link';
+		$classes  = (array) $item->classes;
+		$here     = in_array( 'current-menu-item', $classes, true );
+		$ancestor = in_array( 'current-menu-ancestor', $classes, true ) || in_array( 'current-menu-parent', $classes, true ) || in_array( 'current_page_parent', $classes, true );
+		if ( $this->is_section( $args, $depth ) ) {
+			$output .= '<li class="ag-nav__section"><details class="ag-nav__details" data-ag-menu><summary class="ag-nav__link ag-nav__summary"' . ( $here || $ancestor ? ' aria-current="true"' : '' ) . '>' . esc_html( $item->title ) . '</summary>';
+			return;
+		}
+		$class   = $depth > 0 ? 'ag-nav__menu-link' : ( isset( $args->link_class ) ? $args->link_class : 'ag-nav__link' );
 		$output .= '<li><a' . ( $class ? ' class="' . esc_attr( $class ) . '"' : '' ) . ' href="' . esc_url( $item->url ) . '"';
-		if ( $current ) {
-			$output .= ' aria-current="' . ( in_array( 'current-menu-item', $classes, true ) ? 'page' : 'true' ) . '"';
+		if ( $here || ( 0 === $depth && $ancestor ) ) {
+			$output .= ' aria-current="' . ( $here ? 'page' : 'true' ) . '"';
 		}
 		if ( ! empty( $item->target ) ) {
 			$output .= ' target="' . esc_attr( $item->target ) . '" rel="noopener"';
@@ -256,7 +349,7 @@ function afrigovpress_date( $post_id = null ) {
 }
 
 /**
- * True when the page opens with an afrigov hero that is the page's main heading. The theme then
+ * True when the page opens with a block that is the page's main heading: an afrigov hero, page title or event header. The theme then
  * leaves out its own title, so the page has one main heading, not two.
  *
  * @param int|WP_Post|null $post The page. Default the current one.
@@ -270,6 +363,12 @@ function afrigovpress_hero_is_title( $post = null ) {
 	foreach ( parse_blocks( $post->post_content ) as $block ) {
 		if ( empty( $block['blockName'] ) ) {
 			continue; // Whitespace between blocks.
+		}
+		if ( in_array( $block['blockName'], array( 'afrigov/page-title', 'afrigov/event-header' ), true ) ) {
+			return true;
+		}
+		if ( 'afrigov/panel' === $block['blockName'] ) {
+			return ! empty( $block['attrs']['isPageTitle'] );
 		}
 		return 'afrigov/hero' === $block['blockName'] && false !== ( $block['attrs']['isPageTitle'] ?? true );
 	}
