@@ -46,7 +46,7 @@ $afrigovpress_contact = $afrigovpress_address || $afrigovpress_phone || $afrigov
 			if ( $afrigovpress_copy_of ) :
 				$afrigovpress_copy_domain = preg_replace( '~^www\\.~', '', (string) wp_parse_url( $afrigovpress_copy_of, PHP_URL_HOST ) );
 				?>
-				<p><?php esc_html_e( 'Unofficial rebuild of', 'afrigovpress' ); ?> <a href="<?php echo esc_url( $afrigovpress_copy_of ); ?>"><?php echo esc_html( $afrigovpress_copy_domain ); ?></a> <?php esc_html_e( 'on', 'afrigovpress' ); ?> <a href="https://github.com/omoyolab/afrigov">afrigov</a>, <?php esc_html_e( 'for demonstration. The ministry and its agencies own their content.', 'afrigovpress' ); ?></p>
+				<p><?php esc_html_e( 'Unofficial rebuild of', 'afrigovpress' ); ?> <a href="<?php echo esc_url( $afrigovpress_copy_of ); ?>"><?php echo esc_html( $afrigovpress_copy_domain ); ?></a> <?php esc_html_e( 'on', 'afrigovpress' ); ?> <a href="https://github.com/afrigov/afrigov">afrigov</a>, <?php esc_html_e( 'for demonstration. The ministry and its agencies own their content.', 'afrigovpress' ); ?></p>
 			<?php else : ?>
 				<p>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?></p>
 			<?php endif; ?>

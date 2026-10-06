@@ -2,7 +2,7 @@
 
 > **In development.** This theme is an early build and how pages are edited is still being decided. It runs and its pages pass the accessibility audit, but it is not ready for a live government site, and the editing experience will change.
 
-The [afrigov](https://github.com/omoyolab/afrigov) design system as a WordPress theme. Most government websites in Africa already run WordPress, so adopting afrigov is a theme install.
+The [afrigov](https://github.com/afrigov/afrigov) design system as a WordPress theme. Most government websites in Africa already run WordPress, so adopting afrigov is a theme install.
 
 The theme is the `afrigovpress/` folder. Everything else here is for building and testing it.
 
@@ -12,7 +12,7 @@ The theme is the `afrigovpress/` folder. Everything else here is for building an
 - Country packs as a site setting: the colours, the flag and the banner's words.
 - News as a dated list with thumbnails, and articles with a lead image.
 - A title, description, sharing tags and structured data for every page, written from what the editor already wrote. An SEO plugin, if active, takes over.
-- Pages that score 100, A with [afrigov-audit](https://github.com/omoyolab/afrigov-audit) out of the box.
+- Pages that score 100, A with [afrigov-audit](https://github.com/afrigov/afrigov-audit) out of the box.
 
 ## Building a page
 

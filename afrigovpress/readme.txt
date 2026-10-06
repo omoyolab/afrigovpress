@@ -49,6 +49,6 @@ afrigovPress puts the afrigov design system on a WordPress site. Choose your cou
 
 afrigovPress, Copyright 2026 Abimbola Omoyola. Distributed under the terms of the GNU GPL v2 or later.
 
-afrigov, https://github.com/omoyolab/afrigov, MIT License, Copyright 2026 Abimbola Omoyola. The stylesheets, script and flags in assets/afrigov/.
+afrigov, https://github.com/afrigov/afrigov, MIT License, Copyright 2026 Abimbola Omoyola. The stylesheets, script and flags in assets/afrigov/.
 
 Simple Icons, https://simpleicons.org, CC0 1.0. The social network icons in inc/social-icons.json.
