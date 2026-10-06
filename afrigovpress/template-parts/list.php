@@ -38,7 +38,7 @@ endif;
 			<?php endif; ?>
 			<a class="ag-list__link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 			<span class="ag-list__meta"><?php echo afrigovpress_date(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the function. ?></span>
-			<?php if ( has_excerpt() ) : ?>
+			<?php if ( has_excerpt() && get_theme_mod( 'afrigovpress_list_excerpts', true ) ) : ?>
 				<p class="ag-list__text"><?php echo esc_html( get_the_excerpt() ); ?></p>
 			<?php endif; ?>
 			<?php if ( $afrigovpress_thumb ) : ?>

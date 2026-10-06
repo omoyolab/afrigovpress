@@ -153,3 +153,8 @@ function afrigovpress_no_emoji() {
 	add_filter( 'emoji_svg_url', '__return_false' );
 }
 add_action( 'init', 'afrigovpress_no_emoji' );
+
+/**
+ * Pages get an excerpt box: it is the sentence under the page's title, and the news page's lead.
+ */
+add_action( 'init', fn() => add_post_type_support( 'page', 'excerpt' ) );

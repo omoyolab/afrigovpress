@@ -115,6 +115,23 @@ function afrigovpress_customize( $wp_customize ) {
 		)
 	);
 
+	$wp_customize->add_setting(
+		'afrigovpress_list_excerpts',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'afrigovpress_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'afrigovpress_list_excerpts',
+		array(
+			'label'       => __( 'A line from each post in news lists', 'afrigovpress' ),
+			'description' => __( 'Off for a shorter list of headlines and dates.', 'afrigovpress' ),
+			'section'     => 'afrigovpress',
+			'type'        => 'checkbox',
+		)
+	);
+
 	$text = array(
 		'afrigovpress_copy_of'   => array( __( 'Demonstration copy of', 'afrigovpress' ), __( 'Only for a demonstration that copies a real website: its address. The banner and the footer then say this site is an unofficial rebuild of it. Leave empty on a real site.', 'afrigovpress' ), 'url' ),
 		'afrigovpress_copy_name' => array( __( 'Full name of the copied organisation', 'afrigovpress' ), __( 'For the banner of a demonstration copy, such as: the Federal Ministry of Health.', 'afrigovpress' ), 'text' ),

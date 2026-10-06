@@ -251,6 +251,13 @@ function afrigovpress_trail() {
 	} elseif ( is_singular( 'post' ) ) {
 		$trail[] = array( $news ? get_the_title( $news ) : __( 'News', 'afrigovpress' ), $news ? get_permalink( $news ) : home_url( '/' ) );
 		$trail[] = array( get_the_title(), '' );
+	} elseif ( is_singular( 'afrigov_event' ) ) {
+		// An event from the afrigov blocks plugin sits under the events page.
+		$events = get_page_by_path( 'events' );
+		if ( $events ) {
+			$trail[] = array( get_the_title( $events ), get_permalink( $events ) );
+		}
+		$trail[] = array( get_the_title(), '' );
 	} elseif ( is_singular() ) {
 		$trail[] = array( get_the_title(), '' );
 	} elseif ( is_search() ) {
