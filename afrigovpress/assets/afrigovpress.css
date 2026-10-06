@@ -195,6 +195,20 @@ body {
   margin-inline: calc(50% - 50vw);
 }
 
+/* A page that opens with a full-width block, such as a hero, has it meet the header, as
+   ag-main--flush does; one that ends with one has it meet the footer. */
+.ag-main:has(> .agp-content:first-child > .alignfull:first-child) {
+  padding-top: 0;
+}
+
+.ag-main:has(> .agp-content:last-child > .alignfull:last-child) {
+  padding-bottom: 0;
+}
+
+.agp-content > .alignfull:last-child {
+  margin-bottom: 0;
+}
+
 /* Buttons sit in a row with afrigov's spacing. */
 .wp-block-buttons {
   display: flex;
