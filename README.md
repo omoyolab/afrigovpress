@@ -44,6 +44,10 @@ Log in at http://localhost:8888/wp-admin with user `admin` and password `passwor
 
 afrigov is a pinned dependency. `npm run sync` copies its built stylesheet, pack stylesheets, script and flags into `afrigovpress/assets/afrigov/`, writes the pack data the PHP reads, and regenerates the colour, type and spacing presets in `theme.json` from afrigov's tokens. Files load with the afrigov version in their address, so browsers fetch the new ones. Bump the dependency, sync, audit, release the theme; sites get it as a normal theme update.
 
+## How it is made
+
+Built with AI assistance (Claude). Every change is reviewed and decided by the maintainer before it ships.
+
 ## Licence
 
 GPL v2 or later, as WordPress themes must be. afrigov itself is MIT and is included under that licence.
